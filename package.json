@@ -1,0 +1,44 @@
+{
+  "name": "mktest",
+  "version": "0.0.1",
+  "description": "Home test for McKinsey",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "server": "node server",
+    "build-prod": "parcel build public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vyacheslav Frolov",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
+    "eslint": "^7.2.0",
+    "lodash": "^4.17.15",
+    "notistack": "^0.9.16",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-intl": "^4.6.9",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-plugin-import": "^2.21.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "parcel": "^2.0.0-alpha.3.2"
+  }
+}
