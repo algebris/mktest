@@ -4,6 +4,8 @@ export const CalculatorActionGroups = {
   Calculator: 'CALCULATOR',
 };
 
+export const BUTTON_ID_PREFIX = 'button-';
+
 export const buttons = [
   { id: 'clear', label: 'C', color: 'primary', keys: ['Escape'] },
   { id: 'divide', label: '÷', color: 'primary', keys: ['/'] },

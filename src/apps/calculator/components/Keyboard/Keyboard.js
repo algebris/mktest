@@ -1,42 +1,53 @@
-import { throttle } from 'lodash';
-import React, { useEffect, useCallback, createRef } from 'react';
+// import { throttle } from 'lodash';
+import React, { useEffect, createRef, useState } from 'react';
 import {
   Box,
-  Container,
-  Button,
 } from '@material-ui/core';
-import { buttons } from '../../model/Calculator.model';
+import { buttons, BUTTON_ID_PREFIX } from '../../model/Calculator.model';
 import { useStyles, CButton } from './Keyboard.styles';
 
-const getButtonName = (id) => `button-${id}`;
-
-export function Keyboard() {
+export function Keyboard({
+  keyboardHandler,
+}) {
   const classes = useStyles();
   const keyboardContainer = createRef();
 
-  const handleKeyUp = (e) => {
-    const button = buttons.find(entry => entry.keys.includes(e.key));
+  const handleKeyUp = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(event, event.currentTarget, event.target)
+    const button = buttons.find(entry => entry.keys.includes(event.key));
     if(!button) {
       return;
     }
-    const target = keyboardContainer.current.children.namedItem(getButtonName(button.id));
+    // const target = keyboardContainer.current.children.namedItem(`${BUTTON_ID_PREFIX}${button.id}`);
+    // event.target.click();
+    keyboardHandler(button.id);
   };
 
-  const handleClick = (e) => {
-    const event = e.target.id
+  const handleClick = (event) => {
+    const id = event.currentTarget.id.slice(BUTTON_ID_PREFIX.length);
+    keyboardHandler(id)
   };
   
   useEffect(() => {
+      console.log('* KEYB useEffect');
       window.addEventListener('keyup', handleKeyUp);
       return () => window.removeEventListener('keyup', handleKeyUp);
   }, []);
+  // useEffect(() => {
+  //   console.log(keyboardContainer);
+  //   keyboardContainer.current.focus();
+  // }, [keyboardContainer]);
+
+  console.log('* KEYB redraw');
 
   return (
     <Box className={classes.root} ref={keyboardContainer}>
-      {buttons.map( el =>
+      {buttons.map(el =>
         <CButton
-          id={getButtonName(el.id)}
-          key={getButtonName(el.id)}
+          id={`${BUTTON_ID_PREFIX}${el.id}`}
+          key={`${BUTTON_ID_PREFIX}${el.id}`}
           onClick={handleClick}
           variant="contained"
           disableElevation
