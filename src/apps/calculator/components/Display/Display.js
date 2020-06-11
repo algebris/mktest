@@ -9,8 +9,6 @@ import { useStyles, DisplayInfo, DisplaySummary } from './Display.styles';
 export function Display({ number }) {
   const classes = useStyles();
 
-  console.log('* DISP redraw');
-
   return (
     <Box className={classes.root}>
       <DisplayInfo>{number}</DisplayInfo>

@@ -1,5 +1,5 @@
 // import { throttle } from 'lodash';
-import React, { useEffect, createRef, useState } from 'react';
+import React, { useEffect, createRef, useState, useCallback } from 'react';
 import {
   Box,
 } from '@material-ui/core';
@@ -13,8 +13,6 @@ export function Keyboard({
   const keyboardContainer = createRef();
 
   const handleKeyUp = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
     console.log(event, event.currentTarget, event.target)
     const button = buttons.find(entry => entry.keys.includes(event.key));
     if(!button) {
@@ -30,17 +28,15 @@ export function Keyboard({
     keyboardHandler(id)
   };
   
-  useEffect(() => {
-      console.log('* KEYB useEffect');
-      window.addEventListener('keyup', handleKeyUp);
-      return () => window.removeEventListener('keyup', handleKeyUp);
-  }, []);
+  // useEffect(() => {
+  //     console.log('* KEYB useEffect');
+  //     window.addEventListener('keyup', handleKeyUp);
+  //     return () => window.removeEventListener('keyup', handleKeyUp);
+  // }, []);
   // useEffect(() => {
   //   console.log(keyboardContainer);
   //   keyboardContainer.current.focus();
   // }, [keyboardContainer]);
-
-  console.log('* KEYB redraw');
 
   return (
     <Box className={classes.root} ref={keyboardContainer}>

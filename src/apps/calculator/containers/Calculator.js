@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   Container,
 } from '@material-ui/core';
@@ -8,44 +8,100 @@ import { useStyles } from './Calculator.styles';
 
 export function Calculator() {
   const classes = useStyles();
-  const [number, setNumber] = useState('0');
+  const [left, setLeft] = useState('0');
+  const [right, setRight] = useState(null);
+  const [operation, setOperation] = useState(null);
 
-  function keyboardHandler(key) {
-    // console.log('pressed >>',key);
-    switch (key) {
+  function performOperation(leftOp, rightOp, oper) {
+    let result = Number(leftOp);
+    switch (oper) {
+      case 'plus':
+        result += Number(rightOp);
+        break;
+      case 'minus':
+        result -= Number(rightOp);
+        break;
+      case 'divide':
+        result /= Number(rightOp);
+      case 'multiply':
+        result *= Number(rightOp);
+      default:
+        break;
+    }
+    console.log('=', result);
+    setLeft(result);
+  }
+
+  function keyboardHandler(keyEvt) {
+    const operand = operation ? right : left;
+    const setOperand = operation ? setRight : setLeft;
+
+    switch (keyEvt) {
       case 'clear':
-        setNumber('0')
+        setLeft('0');
+        setRight(null);
+        setOperation(null);
         break;
       case 'erase':
-        if(number.length === 1) {
-          setNumber('0');
+        if (operand.length === 1) {
+          setOperand('0');
         } else {
-          setNumber(number.slice(0, -1));
+          setOperand(operand.slice(0, -1));
         }
         break;
       case 'dot':
-        setNumber(number + '.');
+        if (!operand.includes('.')) {
+          setOperand(operand + '.');
+        }
+        break;
+      case 'plus':
+        if (operation && right) {
+          setRight(null);
+        }
+        setOperation('plus');
+        break;
+      case 'minus':
+        if (operation && right) {
+          setRight(null);
+        }
+        setOperation('minus');
+        break;
+      case 'multiply':
+        if (operation && right) {
+          setRight(null);
+        }
+        setOperation('multiply');
+        break;
+      case 'divide':
+        if (operation && right) {
+          setRight(null);
+        }
+        setOperation('divide');
+        break;
+      case 'equal':
+        console.log(left, operation, right);
+        if (operation && !right) {
+          setRight(left);
+          return performOperation(left, left, operation);
+        }
+        performOperation(left, right, operation);
         break;
       default:
         break;
     }
-    
-    if(!Number.isNaN(Number(key))) {
-      console.log('process Number >>', key, number)
-      if(number === '0') {
-        setNumber(key);
+
+    if (!Number.isNaN(Number(keyEvt))) {
+      if(operand === '0' || operand === null) {
+        setOperand(keyEvt);
       } else {
-        console.log(number + key)
-        setNumber(number + key);
+        setOperand(operand + keyEvt);
       }
     }
   }
 
-  console.log('* CALC redraw', number);
-
   return (
     <Container className={classes.root}>
-      <Display number={number} />
+      <Display number={left} />
       <Keyboard keyboardHandler={keyboardHandler} />
     </Container>
   );
