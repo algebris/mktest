@@ -1,6 +1,6 @@
-import { CALCULATOR_STORE_KEY } from '../model/Calculator.model';
 import { selectModelValue } from 'lib/selectors';
 import { createSelector } from 'reselect';
+import { CALCULATOR_STORE_KEY } from '../model/Calculator.model';
 
 export const selectCalculatorModel = (state) => state[CALCULATOR_STORE_KEY];
 

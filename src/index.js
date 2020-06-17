@@ -11,10 +11,12 @@ import { AppTheme } from 'app.theme';
 import { AppRouter } from 'app.router';
 import { SnackbarProvider } from 'notistack';
 import { rootReducer } from 'app.reducers';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { translations } from './translations';
 
 const currentLang = 'en';
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>

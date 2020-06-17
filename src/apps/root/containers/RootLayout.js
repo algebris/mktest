@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { Helmet } from 'react-helmet';
 import {
   AppBar,
@@ -7,8 +8,6 @@ import {
   Box,
 } from '@material-ui/core';
 import { ToolBar } from '../components/ToolBar/ToolBar';
-
-import { useIntl } from 'react-intl';
 
 export function RootLayout({ children }) {
   const intl = useIntl();
@@ -25,6 +24,6 @@ export function RootLayout({ children }) {
       <Box display="flex" flexDirection="column" spacing={1}>
         { children }
       </Box>
-    </Container>
+    </Container>,
   ];
 }

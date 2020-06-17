@@ -25,4 +25,4 @@ export const buttons = [
   { id: 'equal', label: '=', color: 'primary', keys: ['Enter', '='] },
   { id: '0', label: '0', color: 'default', keys: ['0'] },
   { id: 'dot', label: '.', color: 'default', keys: ['.'] },
- ];
+];

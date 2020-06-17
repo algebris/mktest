@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   extends: 'airbnb',
   parser: 'babel-eslint',
@@ -10,15 +8,15 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-else-return': 0,
     'no-param-reassign': 0,
+    'no-return-assign': 0,
+    'consistent-return': 0,
     'no-shadow': 'warn',
-    'no-underscore-dangle': ['error', { allow: ['_embedded', '_id', '_hsq', '_links'] }],
     'object-curly-newline': ['error', { multiline: true, consistent: true }],
     'react/destructuring-assignment': [
       2,
       'always',
       { ignoreClassFields: true },
     ],
-    // TODO: Disable this option and fix errors after
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
@@ -27,7 +25,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'import/prefer-default-export': 0,
     'max-len': 'off',
-    'no-nested-ternary': 0
+    'no-nested-ternary': 0,
   },
   env: {
     browser: true,
@@ -45,4 +43,4 @@ module.exports = {
       },
     },
   },
-}
+};

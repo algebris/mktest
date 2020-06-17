@@ -1,5 +1,5 @@
-import messages_en from './en.json';
+import messagesEn from './en.json';
 
 export const translations = {
-  en: messages_en
+  en: messagesEn,
 };

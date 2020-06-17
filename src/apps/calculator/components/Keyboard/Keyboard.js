@@ -1,5 +1,5 @@
-// import { throttle } from 'lodash';
-import React, { useEffect, createRef, useState, useCallback } from 'react';
+import { throttle } from 'lodash';
+import React, { useEffect, createRef } from 'react';
 import {
   Box,
 } from '@material-ui/core';
@@ -12,35 +12,27 @@ export function Keyboard({
   const classes = useStyles();
   const keyboardContainer = createRef();
 
-  const handleKeyUp = (event) => {
-    console.log(event, event.currentTarget, event.target)
-    const button = buttons.find(entry => entry.keys.includes(event.key));
-    if(!button) {
+  const handleKeyUp = throttle((event) => {
+    const button = buttons.find((entry) => entry.keys.includes(event.key));
+    if (!button) {
       return;
     }
-    // const target = keyboardContainer.current.children.namedItem(`${BUTTON_ID_PREFIX}${button.id}`);
-    // event.target.click();
     keyboardHandler(button.id);
-  };
+  }, 300);
 
   const handleClick = (event) => {
     const id = event.currentTarget.id.slice(BUTTON_ID_PREFIX.length);
-    keyboardHandler(id)
+    keyboardHandler(id);
   };
-  
-  // useEffect(() => {
-  //     console.log('* KEYB useEffect');
-  //     window.addEventListener('keyup', handleKeyUp);
-  //     return () => window.removeEventListener('keyup', handleKeyUp);
-  // }, []);
-  // useEffect(() => {
-  //   console.log(keyboardContainer);
-  //   keyboardContainer.current.focus();
-  // }, [keyboardContainer]);
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleKeyUp);
+    return () => window.removeEventListener('keyup', handleKeyUp);
+  }, [handleKeyUp]);
 
   return (
     <Box className={classes.root} ref={keyboardContainer}>
-      {buttons.map(el =>
+      {buttons.map((el) => (
         <CButton
           id={`${BUTTON_ID_PREFIX}${el.id}`}
           key={`${BUTTON_ID_PREFIX}${el.id}`}
@@ -48,9 +40,11 @@ export function Keyboard({
           variant="contained"
           disableElevation
           disableRipple
-          color={el.color}>
+          color={el.color}
+        >
           {el.label}
         </CButton>
+      ),
       )}
     </Box>
   );
