@@ -26,7 +26,7 @@ module.exports.performOperation = (req) => {
     return { error: true, result: null };
   }
 
-  if (result.gt(Number.MAX_VALUE) || result.lt(-Number.MAX_VALUE)) {
+  if (result.isNaN() || result.gt(Number.MAX_VALUE) || result.lt(-Number.MAX_VALUE)) {
     return { error: true, result: null };
   }
 
