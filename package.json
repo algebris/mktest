@@ -22,6 +22,7 @@
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
+    "decimal.js": "^10.2.0",
     "hapi-swagger": "^13.0.2",
     "lodash": "^4.17.15",
     "notistack": "^0.9.17",
