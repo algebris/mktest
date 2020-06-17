@@ -72,6 +72,9 @@ class Core {
       if (!this.last && this.operation) {
         this.last = this.previous;
       }
+      if (!this.last && !this.operation) {
+        return;
+      }
       return this.handleCalculate();
     }
   }

@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import { RootLayout } from 'apps/root';
-import { AppTheme } from 'app.theme';
+import * as themes from 'app.theme';
+import AppThemeProvider from 'apps/root/components/AppThemeProvider/AppThemeProvider';
 import { AppRouter } from 'app.router';
 import { SnackbarProvider } from 'notistack';
 import { rootReducer } from 'app.reducers';
@@ -20,7 +20,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={AppTheme}>
+    <AppThemeProvider themes={themes}>
       <IntlProvider locale={currentLang} messages={translations[currentLang]}>
         <BrowserRouter>
           <SnackbarProvider>
@@ -30,7 +30,7 @@ ReactDOM.render(
           </SnackbarProvider>
         </BrowserRouter>
       </IntlProvider>
-    </MuiThemeProvider>
+    </AppThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );
