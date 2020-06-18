@@ -10,9 +10,12 @@
 * Decimal.js provides correct decimals calculation e.g. 0.1 * 0.2 = 0.02
 * API documentation out of the box
 
+Demo site: http://calc.onsib.ru
+
 ## Specification
 
 Despite the simplicity of initial requirements, I implemented architecture that I used for the large projects.
+
 
 ## Installation
 
@@ -30,7 +33,9 @@ API_URL=http://localhost:3000/
 ### Description:
 
 API_PORT - default port for API binding
+
 API_URL - which URL client will perform in order to get API
+
 
 1. Bring up API
 ```
