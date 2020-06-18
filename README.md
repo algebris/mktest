@@ -13,3 +13,33 @@
 ## Specification
 
 Despite the simplicity of initial requirements, I implemented architecture that I used for the large projects.
+
+## Installation
+
+```
+git clone git@github.com:algebris/mktest.git
+npm install
+```
+
+Create .env in root directory
+```
+API_PORT=4000
+API_URL=http://localhost:3000/
+```
+
+### Description:
+
+API_PORT - default port for API binding
+API_URL - which URL client will perform in order to get API
+
+1. Bring up API
+```
+npm run server
+```
+
+2. Client side
+```
+npm start
+```
+
+
