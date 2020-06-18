@@ -17,13 +17,13 @@ export const custom = createMuiTheme({
   spacing: 10,
   palette: {
     primary: {
-      main: '#9c27b0',
+      main: '#5d4037',
     },
     secondary: {
       main: '#673ab7',
     },
     info: {
-      main: '#ffeb3b',
+      main: '#80deea',
     },
     error: {
       main: '#f48fb1',

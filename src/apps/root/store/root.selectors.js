@@ -12,4 +12,3 @@ export const selectLang = createSelector(
   selectRootStore,
   (store) => store.lang,
 );
-

@@ -1,7 +1,7 @@
 {
   "name": "mktest",
   "version": "0.0.1",
-  "description": "Home test for McKinsey",
+  "description": "Home test",
   "main": "index.js",
   "scripts": {
     "start": "parcel public/index.html",
