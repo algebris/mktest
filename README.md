@@ -6,8 +6,9 @@
 * Provides themes out of the box
 * Provides languages out of the box
 * Keyboard support
+* Dynamic display font adaptation
 * Decimal.js provides correct decimals calculation e.g. 0.1 * 0.2 = 0.02
-* Swagger auto-documentation for the API
+* API documentation out of the box
 
 ## Specification
 

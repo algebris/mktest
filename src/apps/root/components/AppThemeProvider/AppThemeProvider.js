@@ -7,7 +7,7 @@ export default function AppThemeProvider({ themes, children }) {
   const currentTheme = useSelector(selectTheme);
 
   return (
-    <ThemeProvider theme={themes[currentTheme] || themes[Object.keys(themes)[0]]}>
+    <ThemeProvider theme={themes[currentTheme] || themes[Object.keys(themes).shift()]}>
       {children}
     </ThemeProvider>
   );
