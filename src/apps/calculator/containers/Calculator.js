@@ -17,17 +17,12 @@ export function Calculator() {
   const classes = useStyles();
   const [display, setDisplay] = useState('0');
   const dispatch = useDispatch();
-  const [stat, setStat] = useState(core);
 
   const handleCalculateAPI = useCallback((payload) => dispatch(doOperation(payload)), [dispatch]);
 
   useEffect(() => {
     core.handleCalculateAPI = handleCalculateAPI;
   }, [handleCalculateAPI]);
-
-  useEffect(() => {
-    setStat(core);
-  }, [core]);
 
   async function keyboardHandler(id) {
     const value = await core.process(id);
@@ -45,30 +40,6 @@ export function Calculator() {
         <Display display={display} error={core.error} />
         <Keyboard keyboardHandler={keyboardHandler} />
       </Container>
-      <p>
-        Last:
-        {String(core.last)}
-      </p>
-      <p>
-        Previous:
-        {String(core.previous)}
-      </p>
-      <p>
-        Operation:
-        {String(core.operation)}
-      </p>
-      <p>
-        Last operation:
-        {String(core.lastOp)}
-      </p>
-      <p>
-        Can Erase:
-        {String(core.canErase)}
-      </p>
-      <p>
-        Error:
-        {String(core.error)}
-      </p>
     </>
   );
 }
