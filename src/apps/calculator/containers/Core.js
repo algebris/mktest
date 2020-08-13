@@ -23,15 +23,19 @@ class Core {
 
   processDigits(input) {
     this.error = false;
+    if (!this.canErase && input === 'dot') {
+      return;
+    }
     if (!this.operation && this.canErase) {
       if (input === 'dot') {
         return this.previous = this.handleDot(this.previous);
       }
       return this.previous = (this.previous === '0') ? input : this.previous + input;
     } else {
-      this.canErase = true;
-      if (input === 'dot') {
-        return; // this.last = this.handleDot(this.last);
+      if (input === 'dot' && this.canErase) {
+        return this.last = this.handleDot(this.last);
+      } else {
+        this.canErase = true;
       }
       return this.last = (this.last === '0' || this.last === null) ? input : this.last + input;
     }

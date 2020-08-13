@@ -21,6 +21,9 @@ export function Keyboard({
   }, 300);
 
   const handleClick = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
     const id = event.currentTarget.id.slice(BUTTON_ID_PREFIX.length);
     keyboardHandler(id);
   };
