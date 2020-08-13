@@ -28,7 +28,7 @@ export const useStyles = makeStyles((theme) => ({
 export const DisplayInfo = withStyles((theme) => ({
   root: {
     minHeight: 30,
-    direction: 'rtl',
+    // direction: 'rtl',
     overflow: 'hidden',
     width: '100%',
     color: theme.palette.info.contrastText,

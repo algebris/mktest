@@ -31,13 +31,13 @@ class Core {
     } else {
       this.canErase = true;
       if (input === 'dot') {
-        return this.last = this.handleDot(this.last);
+        return; // this.last = this.handleDot(this.last);
       }
       return this.last = (this.last === '0' || this.last === null) ? input : this.last + input;
     }
   }
 
-  processOperation(input) {
+  async processOperation(input) {
     if (input === 'clear') {
       this.clear();
       return this.previous;
@@ -58,7 +58,7 @@ class Core {
     if (['plus', 'minus', 'multiply', 'divide'].includes(input)) {
       this.canErase = false;
       if (this.operation && this.last && this.lastOp !== 'equal') {
-        this.handleCalculate();
+        await this.handleCalculate();
         this.last = null;
         this.operation = input;
         return this.previous;
